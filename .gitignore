@@ -62,8 +62,8 @@ rat-results.txt
 superset/app/
 
 # Node.js, webpack artifacts
-*.entry.js
-*.js.map
+# *.entry.js
+# *.js.map
 node_modules
 npm-debug.log*
 # superset/static/assets
