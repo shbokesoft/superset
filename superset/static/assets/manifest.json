@@ -1,0 +1,87 @@
+{
+  "app": "superset",
+  "entrypoints": {
+    "preamble": {
+      "css": [],
+      "js": [
+        "\\static\\assets\\4.9ed865ea.chunk.js",
+        "\\static\\assets\\preamble.9ed865ea.entry.js"
+      ]
+    },
+    "theme": {
+      "css": [],
+      "js": [
+        "\\static\\assets\\theme.9ed865ea.entry.js"
+      ]
+    },
+    "menu": {
+      "css": [],
+      "js": [
+        "\\static\\assets\\4.9ed865ea.chunk.js",
+        "\\static\\assets\\5.9ed865ea.chunk.js",
+        "\\static\\assets\\menu.9ed865ea.entry.js"
+      ]
+    },
+    "spa": {
+      "css": [],
+      "js": [
+        "\\static\\assets\\thumbnail.9ed865ea.chunk.js",
+        "\\static\\assets\\4.9ed865ea.chunk.js",
+        "\\static\\assets\\5.9ed865ea.chunk.js",
+        "\\static\\assets\\6.9ed865ea.chunk.js",
+        "\\static\\assets\\7.9ed865ea.chunk.js",
+        "\\static\\assets\\8.9ed865ea.chunk.js",
+        "\\static\\assets\\9.9ed865ea.chunk.js",
+        "\\static\\assets\\spa.9ed865ea.entry.js"
+      ]
+    },
+    "addSlice": {
+      "css": [],
+      "js": [
+        "\\static\\assets\\thumbnail.9ed865ea.chunk.js",
+        "\\static\\assets\\4.9ed865ea.chunk.js",
+        "\\static\\assets\\5.9ed865ea.chunk.js",
+        "\\static\\assets\\7.9ed865ea.chunk.js",
+        "\\static\\assets\\8.9ed865ea.chunk.js",
+        "\\static\\assets\\addSlice.9ed865ea.entry.js"
+      ]
+    },
+    "explore": {
+      "css": [],
+      "js": [
+        "\\static\\assets\\thumbnail.9ed865ea.chunk.js",
+        "\\static\\assets\\4.9ed865ea.chunk.js",
+        "\\static\\assets\\5.9ed865ea.chunk.js",
+        "\\static\\assets\\6.9ed865ea.chunk.js",
+        "\\static\\assets\\7.9ed865ea.chunk.js",
+        "\\static\\assets\\8.9ed865ea.chunk.js",
+        "\\static\\assets\\9.9ed865ea.chunk.js",
+        "\\static\\assets\\explore.9ed865ea.entry.js"
+      ]
+    },
+    "sqllab": {
+      "css": [],
+      "js": [
+        "\\static\\assets\\4.9ed865ea.chunk.js",
+        "\\static\\assets\\5.9ed865ea.chunk.js",
+        "\\static\\assets\\6.9ed865ea.chunk.js",
+        "\\static\\assets\\7.9ed865ea.chunk.js",
+        "\\static\\assets\\sqllab.9ed865ea.entry.js"
+      ]
+    },
+    "profile": {
+      "css": [],
+      "js": [
+        "\\static\\assets\\4.9ed865ea.chunk.js",
+        "\\static\\assets\\5.9ed865ea.chunk.js",
+        "\\static\\assets\\profile.9ed865ea.entry.js"
+      ]
+    },
+    "showSavedQuery": {
+      "css": [],
+      "js": [
+        "\\static\\assets\\showSavedQuery.9ed865ea.entry.js"
+      ]
+    }
+  }
+}
