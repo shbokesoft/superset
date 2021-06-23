@@ -308,3 +308,5 @@ zipp==3.4.1
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
+infi.clickhouse-orm==1.0.2
+sqlalchemy-clickhouse==0.1.5.post0
