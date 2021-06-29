@@ -20,7 +20,7 @@ import os
 from typing import Any, Callable, Dict
 
 import wtforms_json
-from flask import Flask, redirect
+from flask import Flask, redirect, request
 from flask_appbuilder import expose, IndexView
 from flask_babel import gettext as __, lazy_gettext as _
 from flask_compress import Compress
