@@ -26,7 +26,7 @@ from superset import app, db
 from superset.connectors.base.models import BaseDatasource
 from superset.connectors.connector_registry import ConnectorRegistry
 from superset.exceptions import QueryObjectValidationError
-from superset.typing import Metric, OrderBy
+from superset.superset_typing import Metric, OrderBy
 from superset.utils import pandas_postprocessing
 from superset.utils.core import (
     ChartDataResultType,

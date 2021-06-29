@@ -26,7 +26,7 @@ from superset import app, db, event_logger
 from superset.connectors.connector_registry import ConnectorRegistry
 from superset.datasets.commands.exceptions import DatasetForbiddenError
 from superset.exceptions import SupersetException, SupersetSecurityException
-from superset.typing import FlaskResponse
+from superset.superset_typing import FlaskResponse
 from superset.views.base import check_ownership
 
 from .base import api, BaseSupersetView, handle_api_exception, json_error_response

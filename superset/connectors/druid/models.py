@@ -55,7 +55,7 @@ from superset.exceptions import SupersetException
 from superset.extensions import encrypted_field_factory
 from superset.models.core import Database
 from superset.models.helpers import AuditMixinNullable, ImportExportMixin, QueryResult
-from superset.typing import FilterValues, Granularity, Metric, QueryObjectDict
+from superset.superset_typing import FilterValues, Granularity, Metric, QueryObjectDict
 from superset.utils import core as utils
 from superset.utils.date_parser import parse_human_datetime, parse_human_timedelta
 

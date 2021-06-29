@@ -74,7 +74,7 @@ from superset.models.core import Database
 from superset.models.helpers import AuditMixinNullable, QueryResult
 from superset.result_set import SupersetResultSet
 from superset.sql_parse import ParsedQuery
-from superset.typing import AdhocMetric, Metric, OrderBy, QueryObjectDict
+from superset.superset_typing import AdhocMetric, Metric, OrderBy, QueryObjectDict
 from superset.utils import core as utils
 from superset.utils.core import GenericDataType, remove_duplicates
 
