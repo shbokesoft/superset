@@ -292,7 +292,16 @@ const config = {
         description: t('Show total aggregations of selected metrics. Note that row limit does not apply to the result.'),
         visibility: isAggMode
       }
-    }], ['adhoc_filters']]
+    }], ['adhoc_filters'], 
+    [{
+      name: 'script',
+      config: {
+        type: 'TextAreaControl',
+        label: '行点击',
+        description: t('Put your code here, 例如："alert(888)"/"window.open(`https://www.baidu.com/`)"'),
+        default: '',
+      },
+    }]]
   }, {
     label: t('Options'),
     expanded: true,
