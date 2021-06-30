@@ -167,8 +167,10 @@ export default function DataTable({
       key: rowKey,
       ...rowProps
     } = row.getRowProps();
-    let chartFormData = store.getState().charts[2] ? store.getState().charts[2].formData : null;
-    let scriptStr = chartFormData ? chartFormData.script : '';
+    let chartData = store.getState().charts,
+        chartKey = Object.keys(chartData)[0],
+        chartFormData = chartKey ? chartData[chartKey].formData : null,
+        scriptStr = chartFormData ? chartFormData.script : '';
     if (scriptStr) {
       rowProps.onClick = () => {
         eval(scriptStr); // 执行不被信任的脚本，待引入沙盒安全机制 sandbox
