@@ -190,6 +190,34 @@ const v1ChartDataRequest = async (
     allowDomainSharding,
   }).toString();
 
+  let parameterStr = window.location.search.substring(1); // 截取url '?'后面的str
+  let parameters = {};
+  if (parameterStr) {
+    parameterStr.split('&').forEach(parametercell => {
+      let tempArray = parametercell.split('=');
+      parameters[tempArray[0]] = decodeURI(tempArray[1]);
+    });
+  }
+  payload.queries.forEach(queryItem => {
+    let tempFilters = []; // 暂存filterVal值找不到的filterItem
+    queryItem.filters.forEach(filterCfg => {
+      const match_result = filterCfg.val.match(/\${.*}/g); // 例：${material_type_id}
+      if( match_result && match_result.length ){
+        let parameter_key = match_result[0].substring(2, match_result[0].length - 1);
+        let filterVal = parameters[parameter_key];
+        if ( filterVal ) {
+          filterCfg.val = filterVal;
+        } else {
+          tempFilters.push(filterCfg);
+        }
+      }
+    });
+    tempFilters.forEach( item => { // 过滤掉暂存单里存在的filter
+      queryItem.filters = queryItem.filters.filter(itemj => {
+        return itemj.col !== item.col;
+      });
+    });
+  });
   const querySettings = {
     ...requestParams,
     url,
