@@ -101,6 +101,8 @@ METRIC_KEYS = [
     "x",
     "y",
     "size",
+    "line_metrics",
+    "bar_metrics",
 ]
 
 # This regex is to get user defined filter column name, which is the first param in the filter_values function.
@@ -3103,6 +3105,89 @@ class PartitionViz(NVD3TimeSeriesViz):
         else:
             levels = self.levels_for("agg_sum", [DTTM_ALIAS] + groups, df)
         return self.nest_values(levels)
+
+
+class MixLineBarViz(NVD3Viz):
+    """ mix line bar"""
+    viz_type = "mix_line_bar"
+    verbose_name = _("Mix Line Bar")
+    # 是否排序
+    sort_series = False
+    # 是否对time 做处理 _timestamp
+    is_timeseries = False
+
+    def query_obj(self):
+        # check bar column, line column 是否重复
+        bar_metrics = self.form_data.get('bar_metrics')
+        line_metrics = self.form_data.get('line_metrics')
+        if not bar_metrics and not line_metrics:
+            raise Exception(_("Please choose metrics on line or bar type"))
+        bar_metrics = [] if not bar_metrics else bar_metrics
+        line_metrics = [] if not line_metrics else line_metrics
+        intersection = [m for m in bar_metrics if m in line_metrics]
+        if intersection:
+            raise Exception(_("Please choose different metrics on line and bar type"))
+        d = super().query_obj()
+        return d
+
+    def to_series(self, df, classed=""):
+        """
+         拼接 前端渲染需要的数据
+        :param df:
+        :param classed:
+        :return: {'legend':[], 'bar':[], 'line':[]}
+        """
+        cols = []
+        for col in df.columns:
+            if col == "":
+                cols.append("N/A")
+            elif col is None:
+                cols.append("NULL")
+            else:
+                cols.append(col)
+        df.columns = cols
+        series = df.to_dict("series")
+        # [{}]
+        bar_metrics = self.form_data.get('bar_metrics', [])
+        bar_metrics = [] if not bar_metrics else bar_metrics
+        line_metrics = self.form_data.get('line_metrics', [])
+        line_metrics = [] if not line_metrics else line_metrics
+
+        metrics = self.all_metrics
+        legend, data = [], []
+        for mt in metrics:
+            m_label = utils.get_metric_name(mt)
+            ys = series[m_label]
+            if df[m_label].dtype.kind not in "biufc":
+                continue
+            legend.append(m_label)
+            info = {
+                "name": m_label,
+                "data": [
+                    ys.get(ds, None) for ds in df.index
+                ],
+                "type": ''
+            }
+            if mt in bar_metrics:
+                info['type'] = 'bar'
+            elif mt in line_metrics:
+                info['type'] = 'line'
+            else:
+                continue
+            data.append(info)
+        chart_data = {
+            'legend': legend,
+            'data': data,
+            'x_data': [str(ds) if not isinstance(ds, tuple) else ','.join(map(str, ds)) for ds in df.index]
+        }
+
+        return chart_data
+
+    def get_data(self, df: pd.DataFrame):
+        # 后端返回的数据
+        df = df.pivot_table(index=self.groupby, values=self.metric_labels)
+        chart_data = self.to_series(df)
+        return chart_data
 
 
 def get_subclasses(cls: Type[BaseViz]) -> Set[Type[BaseViz]]:

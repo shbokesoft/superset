@@ -22,6 +22,7 @@ import setupPluginsExtra from './setupPluginsExtra';
 
 import Separator from '../explore/controlPanels/Separator';
 import TimeTable from '../explore/controlPanels/TimeTable';
+import MixLineBar from '../explore/controlPanels/MixLineBar';
 
 export default function setupPlugins() {
   new MainPreset().register();
@@ -29,7 +30,8 @@ export default function setupPlugins() {
   // TODO: Remove these shims once the control panel configs are moved into the plugin package.
   getChartControlPanelRegistry()
     .registerValue('separator', Separator)
-    .registerValue('time_table', TimeTable);
+    .registerValue('time_table', TimeTable)
+    .registerValue('mix_line_bar', MixLineBar);
 
   setupPluginsExtra();
 }

@@ -492,4 +492,89 @@ export const controls = {
       colorScheme: state.form_data.color_scheme,
     }),
   },
+
+  line_metrics: {
+    ...metrics, // 继承
+    multi: true, // 多选
+    clearable: true, // 是否可调用， true当作sql
+    validators: [], // 是否可以为空
+    label: t('Line Type Metrics'),
+    description: t('Metrics for which line type are to be displayed'),
+  },
+
+  bar_metrics: {
+    ...metrics,
+    multi: true,
+    clearable: true,
+    validators: [],
+    label: t('Bar Type Metrics'),
+    description: t('Metrics for which bar type are to be displayed'),
+  },
+
+  y_metrics_2: {
+    ...metrics, 
+    multi: true,
+    validators: [],
+    default:null,
+    label: t('Y Axis 2 Columns'),
+    description: t('Select the numeric columns to display in Right-Y-Axis'),
+  },
+    left_y_min: {
+    type: 'TextControl', //文本输入
+    label: t('Left Y Min'),
+    renderTrigger: true,
+    isInt: true,
+    description: t('Left Y Min'),
+  },
+  left_y_max: {
+    type: 'TextControl',
+    label: t('Left Y Max'),
+    renderTrigger: true,
+    isInt: true,
+    description: t('Left Y Max'),
+  },
+  left_y_interval: {
+    type: 'TextControl',
+    label: t('Left Y Interval'),
+    renderTrigger: true,
+    isInt: true,
+    description: t('Left Y Interval'),
+  },
+  right_y_min: {
+    type: 'TextControl',
+    label: t('Right Y Min'),
+    renderTrigger: true,
+    isInt: true,
+    description: t('Right Y Min'),
+  },
+  right_y_max: {
+    type: 'TextControl',
+    label: t('Right Y Max'),
+    renderTrigger: true,
+    isInt: true,
+    description: t('Right Y Max'),
+  },
+  right_y_interval: {
+    type: 'TextControl',
+    label: t('Right Y Interval'),
+    renderTrigger: true,
+    isInt: true,
+    description: t('Right Y Interval'),
+  },
+  y_axis_2_label: {
+    type: 'TextControl',
+    label: t('Y Axis 2 Label'),
+    renderTrigger: true,
+    default: '',
+  },
+  
+ right_y_column: {
+    type: 'SelectControl',
+    freeForm: true,
+    renderTrigger: true,
+    multi: true,
+    label: t('Y Axis 2 Column'),
+    description: t('Choose or add metrics (label) to display in right y axis'),
+  },
+
 };
