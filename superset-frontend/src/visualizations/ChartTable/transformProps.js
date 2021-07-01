@@ -193,7 +193,8 @@ const transformProps = chartProps => {
     server_page_length: serverPageLength = 10,
     order_desc: sortDesc = false,
     query_mode: queryMode,
-    show_totals: showTotals
+    show_totals: showTotals,
+    script
   } = formData;
   const [metrics, percentMetrics, columns] = processColumns(chartProps);
   let baseQuery;
@@ -236,7 +237,8 @@ const transformProps = chartProps => {
     pageSize: serverPagination ? serverPageLength : getPageSize(pageLength, data.length, columns.length),
     filters,
     emitFilter: tableFilter,
-    onChangeFilter
+    onChangeFilter,
+    script
   };
 };
 

@@ -149,8 +149,8 @@ export default function TableChart(props) {
     emitFilter = false,
     sortDesc = false,
     filters: initialFilters = {},
-    sticky = true // whether to use sticky header
-
+    sticky = true, // whether to use sticky header
+    script
   } = props;
   const [filters, setFilters] = useState(initialFilters);
   const handleChange = useCallback(filters => {
@@ -343,6 +343,7 @@ export default function TableChart(props) {
     searchInput: includeSearch && SearchInput,
     selectPageSize: pageSize !== null && SelectPageSize // not in use in Superset, but needed for unit tests
     ,
-    sticky: sticky
+    sticky: sticky,
+    script,
   }));
 }

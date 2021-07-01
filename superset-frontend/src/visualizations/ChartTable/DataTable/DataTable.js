@@ -29,7 +29,6 @@ import SimplePagination from './components/Pagination';
 import useSticky from './hooks/useSticky';
 import { PAGE_SIZE_OPTIONS } from '../consts';
 import { jsx as ___EmotionJSX } from "@emotion/react";
-import { store } from 'src/views/store';
 // Be sure to pass our updateMyData and the skipReset option
 export default function DataTable({
   tableClassName,
@@ -51,6 +50,7 @@ export default function DataTable({
   hooks,
   serverPagination,
   wrapperRef: userWrapperRef,
+  script,
   ...moreUseTableOptions
 }) {
   const tableHooks = [useGlobalFilter, useSortBy, usePagination, doSticky ? useSticky : [], hooks || []].flat();
@@ -167,13 +167,9 @@ export default function DataTable({
       key: rowKey,
       ...rowProps
     } = row.getRowProps();
-    let chartData = store.getState().charts,
-        chartKey = Object.keys(chartData)[0],
-        chartFormData = chartKey ? chartData[chartKey].formData : null,
-        scriptStr = chartFormData ? chartFormData.script : '';
-    if (scriptStr) {
+    if (script && script.trim()) {
       rowProps.onClick = () => {
-        eval(scriptStr); // 执行不被信任的脚本，待引入沙盒安全机制 sandbox
+        eval(script); // 执行不被信任的脚本，待引入沙盒安全机制 sandbox
       };
     }
     return ___EmotionJSX("tr", _extends({
