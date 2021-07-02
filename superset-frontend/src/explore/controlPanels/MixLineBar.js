@@ -12,7 +12,6 @@ export default {
       expanded: true,
       controlSetRows: [['color_scheme', 'label_colors']],
     },
-
     {
       label: t('X Axis'),
       expanded: true,
@@ -21,39 +20,59 @@ export default {
     {
       label: t('Line Type'),
       expanded: true,
-      controlSetRows: [['line_metrics']],
+      controlSetRows: [
+        [
+          {
+            name: 'line_metrics',
+            config: {
+              type: 'MetricsControl',
+              multi: true,
+              label: 'line 指标',
+              description: t('One or many metrics to display'),
+              default: '',
+              mapStateToProps: state => {
+                const { datasource } = state;
+                return {
+                  columns: datasource ? datasource.columns : [],
+                  savedMetrics: datasource ? datasource.metrics : [],
+                  datasourceType: datasource && datasource.type,
+                };
+              },
+            },
+          },
+        ],
+      ],
     },
     {
       label: t('Bar Type'),
       expanded: true,
-      controlSetRows: [['bar_metrics']],
-    },
-    {
-      label: t('Real Y Axis 2 Display Columns'),
-      expanded: true,
-      controlSetRows: [['right_y_column']],
-    },
-
-    {
-      label: t('Y Axis 1 Scale Value Setting'),
-      expanded: true,
       controlSetRows: [
-        ['left_y_min', 'left_y_max', 'left_y_interval'],
-        ['y_axis_label'],
-      ],
-    },
-    {
-      label: t('Y Axis 2 Scale Value Setting'),
-      expanded: true,
-      controlSetRows: [
-        ['right_y_min', 'right_y_max', 'right_y_interval'],
-        ['y_axis_2_label'],
+        [
+          {
+            name: 'bar_metrics',
+            config: {
+              type: 'MetricsControl',
+              multi: true,
+              label: 'bar 指标',
+              description: t('One or many metrics to display'),
+              default: '',
+              mapStateToProps: state => {
+                const { datasource } = state;
+                return {
+                  columns: datasource ? datasource.columns : [],
+                  savedMetrics: datasource ? datasource.metrics : [],
+                  datasourceType: datasource && datasource.type,
+                };
+              },
+            },
+          },
+        ],
       ],
     },
     {
       label: t('Query'),
       expanded: true,
-      controlSetRows: [['adhoc_filters']],
+      controlSetRows: [['adhoc_filters'], ['row_limit'], ['limit']],
     },
   ],
   controlOverrides: {},

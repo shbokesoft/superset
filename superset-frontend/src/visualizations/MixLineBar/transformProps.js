@@ -1,7 +1,5 @@
 export default function transformProps(chartProps) {
-  console.log(123, chartProps);
   const { width, height, queriesData, formData } = chartProps;
-  
   // formData 前端页面的数据 queriesData 后端返回的数据
   return {
     data: queriesData[0].data,
