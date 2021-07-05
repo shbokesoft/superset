@@ -36,23 +36,9 @@ import PivotTableChartPlugin from '@superset-ui/legacy-plugin-chart-pivot-table'
 import RoseChartPlugin from '@superset-ui/legacy-plugin-chart-rose';
 import SankeyChartPlugin from '@superset-ui/legacy-plugin-chart-sankey';
 import SunburstChartPlugin from '@superset-ui/legacy-plugin-chart-sunburst';
-import TableChartPlugin from '../ChartTable';
-import MixLineBarChartPlugin from '../MixLineBar/MixLineBarChartPlugin'
 import TreemapChartPlugin from '@superset-ui/legacy-plugin-chart-treemap';
 import { WordCloudChartPlugin } from '@superset-ui/plugin-chart-word-cloud';
 import WorldMapChartPlugin from '@superset-ui/legacy-plugin-chart-world-map';
-import {
-  AreaChartPlugin,
-  BarChartPlugin,
-  BubbleChartPlugin,
-  BulletChartPlugin,
-  CompareChartPlugin,
-  DistBarChartPlugin,
-  DualLineChartPlugin,
-  LineChartPlugin,
-  LineMultiChartPlugin,
-  TimePivotChartPlugin,
-} from '@superset-ui/legacy-preset-chart-nvd3';
 import { DeckGLChartPreset } from '@superset-ui/legacy-preset-chart-deckgl';
 import {
   EchartsPieChartPlugin,
@@ -75,6 +61,20 @@ import {
   GroupByFilterPlugin,
 } from 'src/filters/components/';
 import { PivotTableChartPlugin as PivotTableChartPluginV2 } from '@superset-ui/plugin-chart-pivot-table';
+import {
+  AreaChartPlugin,
+  BarChartPlugin,
+  BubbleChartPlugin,
+  BulletChartPlugin,
+  CompareChartPlugin,
+  DistBarChartPlugin,
+  DualLineChartPlugin,
+  LineChartPlugin,
+  LineMultiChartPlugin,
+  TimePivotChartPlugin,
+} from '../legacy-preset-chart-nvd3';
+import MixLineBarChartPlugin from '../MixLineBar/MixLineBarChartPlugin';
+import TableChartPlugin from '../ChartTable';
 import FilterBoxChartPlugin from '../FilterBox/FilterBoxChartPlugin';
 import TimeTableChartPlugin from '../TimeTable/TimeTableChartPlugin';
 import { FeatureFlag } from '../../featureFlags';
