@@ -4,9 +4,9 @@
     "preamble": {
       "css": [],
       "js": [
-        "\\static\\assets\\e4e840eea7b71daa4929.chunk.js",
-        "\\static\\assets\\f3d057dea020b890ac26.chunk.js",
-        "\\static\\assets\\preamble.8c7d83f4c7b9feee67c1.entry.js"
+        "\\static\\assets\\8cd60be39d3ecacd6efc.chunk.js",
+        "\\static\\assets\\91eeb2ba878f83894079.chunk.js",
+        "\\static\\assets\\preamble.bef628b6ab85755fa4ad.entry.js"
       ]
     },
     "theme": {
@@ -14,15 +14,15 @@
         "\\static\\assets\\theme.a4f038b69c96aa07b2df.entry.css"
       ],
       "js": [
-        "\\static\\assets\\theme.13ed6af1867d689cd0aa.entry.js"
+        "\\static\\assets\\theme.e8628df16a75578579eb.entry.js"
       ]
     },
     "menu": {
       "css": [],
       "js": [
-        "\\static\\assets\\e4e840eea7b71daa4929.chunk.js",
-        "\\static\\assets\\f3d057dea020b890ac26.chunk.js",
-        "\\static\\assets\\menu.ee685b7bbafe12964a94.entry.js"
+        "\\static\\assets\\8cd60be39d3ecacd6efc.chunk.js",
+        "\\static\\assets\\91eeb2ba878f83894079.chunk.js",
+        "\\static\\assets\\menu.027c4da9a1fc9e6e44d7.entry.js"
       ]
     },
     "spa": {
@@ -30,9 +30,9 @@
         "\\static\\assets\\spa.b788fed65dbf3f5054a9.entry.css"
       ],
       "js": [
-        "\\static\\assets\\8fff5c9f01afce0fb17e.chunk.js",
-        "\\static\\assets\\e4e840eea7b71daa4929.chunk.js",
-        "\\static\\assets\\spa.9327c39ba85cef054ef9.entry.js"
+        "\\static\\assets\\46cfd897132fa2ea2a27.chunk.js",
+        "\\static\\assets\\8cd60be39d3ecacd6efc.chunk.js",
+        "\\static\\assets\\spa.f41fcf6ef39c08f3afd8.entry.js"
       ]
     },
     "addSlice": {
@@ -40,9 +40,9 @@
         "\\static\\assets\\addSlice.f3dd048a7946366f7c55.entry.css"
       ],
       "js": [
-        "\\static\\assets\\8fff5c9f01afce0fb17e.chunk.js",
-        "\\static\\assets\\e4e840eea7b71daa4929.chunk.js",
-        "\\static\\assets\\addSlice.48e76caa88563e03b250.entry.js"
+        "\\static\\assets\\46cfd897132fa2ea2a27.chunk.js",
+        "\\static\\assets\\8cd60be39d3ecacd6efc.chunk.js",
+        "\\static\\assets\\addSlice.4093b0ab56ef60a7a87b.entry.js"
       ]
     },
     "explore": {
@@ -50,9 +50,9 @@
         "\\static\\assets\\explore.bb7bbe52b9ad4e56a0d9.entry.css"
       ],
       "js": [
-        "\\static\\assets\\8fff5c9f01afce0fb17e.chunk.js",
-        "\\static\\assets\\e4e840eea7b71daa4929.chunk.js",
-        "\\static\\assets\\explore.65dbce73c96f827f2c1b.entry.js"
+        "\\static\\assets\\46cfd897132fa2ea2a27.chunk.js",
+        "\\static\\assets\\8cd60be39d3ecacd6efc.chunk.js",
+        "\\static\\assets\\explore.fb60d44feb4fd2c1eeea.entry.js"
       ]
     },
     "sqllab": {
@@ -60,9 +60,9 @@
         "\\static\\assets\\sqllab.19be0a0354794104a388.entry.css"
       ],
       "js": [
-        "\\static\\assets\\f76fdbe5d05ba9ef5838.chunk.js",
-        "\\static\\assets\\e4e840eea7b71daa4929.chunk.js",
-        "\\static\\assets\\sqllab.8a83a80cacab9aa0a4be.entry.js"
+        "\\static\\assets\\9defa5bfb520e37e78bf.chunk.js",
+        "\\static\\assets\\8cd60be39d3ecacd6efc.chunk.js",
+        "\\static\\assets\\sqllab.fa0fd8ad9a35e6c6fb4d.entry.js"
       ]
     },
     "profile": {
@@ -70,9 +70,9 @@
         "\\static\\assets\\profile.de478c976195f1be07d0.entry.css"
       ],
       "js": [
-        "\\static\\assets\\e4e840eea7b71daa4929.chunk.js",
-        "\\static\\assets\\4507f96766db3a0f58d9.chunk.js",
-        "\\static\\assets\\profile.fd9962ba56493c22fdc7.entry.js"
+        "\\static\\assets\\8cd60be39d3ecacd6efc.chunk.js",
+        "\\static\\assets\\f0d0df51f03e309d6813.chunk.js",
+        "\\static\\assets\\profile.cd4c01153363b2b2626c.entry.js"
       ]
     },
     "showSavedQuery": {
@@ -80,9 +80,9 @@
         "\\static\\assets\\showSavedQuery.fde4ddcace127376e2de.entry.css"
       ],
       "js": [
-        "\\static\\assets\\f76fdbe5d05ba9ef5838.chunk.js",
-        "\\static\\assets\\e4e840eea7b71daa4929.chunk.js",
-        "\\static\\assets\\showSavedQuery.1cff69b1cba6397f9579.entry.js"
+        "\\static\\assets\\9defa5bfb520e37e78bf.chunk.js",
+        "\\static\\assets\\8cd60be39d3ecacd6efc.chunk.js",
+        "\\static\\assets\\showSavedQuery.1b80b3bb7242e893c9cf.entry.js"
       ]
     }
   }
