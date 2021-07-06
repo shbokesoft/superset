@@ -270,6 +270,17 @@ export const yAxisLabel = {
     default: ''
   }
 };
+export const eventScript = {
+  name: 'event_script',
+  config: {
+    type: 'TextAreaControl',
+    label: '点击事件',
+    description: t(
+      'Put your code here, 例如："alert(888)"/"window.open(`https://www.baidu.com/`)"',
+    ),
+    default: '',
+  },
+};
 export const timeSeriesSection = [{
   label: t('Query'),
   expanded: true,

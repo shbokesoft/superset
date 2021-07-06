@@ -18,7 +18,7 @@
  */
 import { t, validateNonEmpty } from '@superset-ui/core';
 import { sections } from '@superset-ui/chart-controls';
-import { showLegend, showControls, xAxisLabel, bottomMargin, xTicksLayout, showBarValue, barStacked, reduceXTicks, yAxisLabel, yAxisShowMinmax, yAxisBounds } from '../NVD3Controls';
+import { showLegend, showControls, xAxisLabel, bottomMargin, xTicksLayout, showBarValue, barStacked, reduceXTicks, yAxisLabel, yAxisShowMinmax, yAxisBounds, eventScript } from '../NVD3Controls';
 const config = {
   controlPanelSections: [sections.legacyRegularTime, {
     label: t('Query'),
@@ -39,7 +39,7 @@ const config = {
         default: false,
         description: t('Compute the contribution to the total')
       }
-    }]]
+    }], [eventScript]]
   }, {
     label: t('Chart Options'),
     expanded: true,

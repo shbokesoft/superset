@@ -151,7 +151,8 @@ const propTypes = {
   yField: stringOrObjectWithLabelType,
   sizeField: stringOrObjectWithLabelType,
   // time-pivot only
-  baseColor: rgbObjectType
+  baseColor: rgbObjectType,
+  eventScript: PropTypes.string,
 };
 
 const NOOP = () => {};
@@ -213,7 +214,8 @@ function nvd3Vis(element, props) {
     yAxisShowMinMax = false,
     yAxis2ShowMinMax = false,
     yField,
-    yIsLogScale
+    yIsLogScale,
+    eventScript,
   } = props;
   const isExplore = document.querySelector('#explorer-container') !== null;
   const container = element;
@@ -318,6 +320,13 @@ function nvd3Vis(element, props) {
           width = computeBarChartWidth(data, isBarStacked, maxWidth);
         }
 
+        chart.multibar.dispatch.on('elementClick', element => {
+          if (eventScript && eventScript.trim()) {
+            console.log('element:', element);
+            eval(eventScript); // 执行不被信任的脚本，待引入沙盒安全机制 sandbox
+          }
+        });
+        
         chart.width(width);
         break;
 

@@ -92,7 +92,8 @@ export default function transformProps(chartProps) {
     yAxisLabel,
     yAxisShowminmax,
     yAxis2Showminmax,
-    yLogScale
+    yLogScale,
+    eventScript,
   } = formData;
   let {
     markerLabels,
@@ -182,6 +183,7 @@ export default function transformProps(chartProps) {
     yAxisShowMinMax: yAxisShowminmax,
     yAxis2ShowMinMax: yAxis2Showminmax,
     yField: y,
-    yIsLogScale: yLogScale
+    yIsLogScale: yLogScale,
+    eventScript,
   };
 }

@@ -131,6 +131,12 @@ function MixLineBar(element, props) {
   };
 
   myChart.setOption(option);
+  myChart.on('click', element => {
+    if (fd.script && fd.script.trim()) {
+      console.log('element:', element);
+      eval(fd.script); // 执行不被信任的脚本，待引入沙盒安全机制 sandbox
+    }
+  });
 }
 
 MixLineBar.displayName = 'Mix Line Bar';

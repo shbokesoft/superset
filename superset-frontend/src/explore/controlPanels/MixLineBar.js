@@ -72,7 +72,24 @@ export default {
     {
       label: t('Query'),
       expanded: true,
-      controlSetRows: [['adhoc_filters'], ['row_limit'], ['limit']],
+      controlSetRows: [
+        ['adhoc_filters'],
+        ['row_limit'],
+        ['limit'],
+        [
+          {
+            name: 'script',
+            config: {
+              type: 'TextAreaControl',
+              label: '点击事件',
+              description: t(
+                'Put your code here, 例如："alert(888)"/"window.open(`https://www.baidu.com/`)"',
+              ),
+              default: '',
+            },
+          },
+        ],
+      ],
     },
   ],
   controlOverrides: {},

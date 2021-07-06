@@ -168,7 +168,9 @@ export default function DataTable({
       ...rowProps
     } = row.getRowProps();
     if (script && script.trim()) {
+      const element = row
       rowProps.onClick = () => {
+        console.log('element:', element);
         eval(script); // 执行不被信任的脚本，待引入沙盒安全机制 sandbox
       };
     }

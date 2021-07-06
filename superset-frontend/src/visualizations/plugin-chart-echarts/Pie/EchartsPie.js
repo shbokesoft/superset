@@ -70,7 +70,8 @@ export default function EchartsPie({
       }
 
       if (formData.script && formData.script.trim()) {
-        console.log('props', props);
+        const element = props;
+        console.log('element:', element);
         eval(formData.script); // 执行不被信任的脚本，待引入沙盒安全机制 sandbox
       }
       
