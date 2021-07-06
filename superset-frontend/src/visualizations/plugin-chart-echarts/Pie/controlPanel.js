@@ -45,6 +45,16 @@ const config = {
         label: t('Sort by metric'),
         description: t('Whether to sort results by the selected metric in descending order.')
       }
+    }], [{
+      name: 'script',
+      config: {
+        type: 'TextAreaControl',
+        label: '点击事件',
+        description: t(
+          'Put your code here, 例如："alert(888)"/"window.open(`https://www.baidu.com/`)"',
+        ),
+        default: '',
+      },
     }]]
   }, {
     label: t('Chart Options'),

@@ -68,6 +68,12 @@ export default function EchartsPie({
       } else {
         handleChange([...values, name]);
       }
+
+      if (formData.script && formData.script.trim()) {
+        console.log('props', props);
+        eval(formData.script); // 执行不被信任的脚本，待引入沙盒安全机制 sandbox
+      }
+      
     }
   };
   return ___EmotionJSX(Echart, {

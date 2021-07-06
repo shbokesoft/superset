@@ -297,7 +297,7 @@ const config = {
       name: 'script',
       config: {
         type: 'TextAreaControl',
-        label: '行点击',
+        label: '点击事件',
         description: t('Put your code here, 例如："alert(888)"/"window.open(`https://www.baidu.com/`)"'),
         default: '',
       },
