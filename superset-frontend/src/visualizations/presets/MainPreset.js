@@ -41,6 +41,15 @@ import { WordCloudChartPlugin } from '@superset-ui/plugin-chart-word-cloud';
 import WorldMapChartPlugin from '@superset-ui/legacy-plugin-chart-world-map';
 import { DeckGLChartPreset } from '@superset-ui/legacy-preset-chart-deckgl';
 import {
+  SelectFilterPlugin,
+  RangeFilterPlugin,
+  TimeFilterPlugin,
+  TimeColumnFilterPlugin,
+  TimeGrainFilterPlugin,
+  GroupByFilterPlugin,
+} from 'src/filters/components/';
+import { PivotTableChartPlugin as PivotTableChartPluginV2 } from '@superset-ui/plugin-chart-pivot-table';
+import {
   EchartsPieChartPlugin,
   EchartsBoxPlotChartPlugin,
   EchartsTimeseriesChartPlugin,
@@ -51,16 +60,7 @@ import {
   EchartsTreemapChartPlugin,
   EchartsMixedTimeseriesChartPlugin,
   EchartsTreeChartPlugin,
-} from '@superset-ui/plugin-chart-echarts';
-import {
-  SelectFilterPlugin,
-  RangeFilterPlugin,
-  TimeFilterPlugin,
-  TimeColumnFilterPlugin,
-  TimeGrainFilterPlugin,
-  GroupByFilterPlugin,
-} from 'src/filters/components/';
-import { PivotTableChartPlugin as PivotTableChartPluginV2 } from '@superset-ui/plugin-chart-pivot-table';
+} from '../plugin-chart-echarts';
 import {
   AreaChartPlugin,
   BarChartPlugin,

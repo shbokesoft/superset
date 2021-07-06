@@ -27,11 +27,11 @@ import {
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { testWithId } from 'src/utils/testUtils';
+import { LineChartPlugin } from '@superset-ui/preset-chart-xy/lib';
 import {
   EchartsMixedTimeseriesChartPlugin,
   EchartsTimeseriesChartPlugin,
-} from '@superset-ui/plugin-chart-echarts/lib';
-import { LineChartPlugin } from '@superset-ui/preset-chart-xy/lib';
+} from '../../../../visualizations/plugin-chart-echarts';
 import TimeTableChartPlugin from '../../../../visualizations/TimeTable/TimeTableChartPlugin';
 import VizTypeControl, { VIZ_TYPE_CONTROL_TEST_ID } from './index';
 
