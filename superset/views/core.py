@@ -104,6 +104,7 @@ from superset.utils.cache import etag_cache
 from superset.utils.core import ReservedUrlParameters
 from superset.utils.dates import now_as_float
 from superset.utils.decorators import check_dashboard_access
+from superset.views import base
 from superset.views.base import (
     api,
     BaseSupersetView,
@@ -1873,10 +1874,7 @@ class Superset(BaseSupersetView):  # pylint: disable=too-many-public-methods
             edit_mode=edit_mode,
         )
 
-        bootstrap_data = {
-            "user": bootstrap_user_data(g.user, include_perms=True),
-            "common": common_bootstrap_payload(),
-        }
+        bootstrap_data = base.getuserInfo()
 
         return self.render_template(
             "superset/spa.html",
@@ -2806,10 +2804,7 @@ class Superset(BaseSupersetView):  # pylint: disable=too-many-public-methods
         if welcome_dashboard_id:
             return self.dashboard(dashboard_id_or_slug=str(welcome_dashboard_id))
 
-        payload = {
-            "user": bootstrap_user_data(g.user, include_perms=True),
-            "common": common_bootstrap_payload(),
-        }
+        payload = base.getuserInfo();
 
         return self.render_template(
             "superset/spa.html",

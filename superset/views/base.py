@@ -465,15 +465,12 @@ class SupersetModelView(ModelView):
     list_widget = SupersetListWidget
 
     def render_app_template(self) -> FlaskResponse:
-        payload = {
-            "user": bootstrap_user_data(g.user, include_perms=True),
-            "common": common_bootstrap_payload(),
-        }
+
         return self.render_template(
             "superset/spa.html",
             entry="spa",
             bootstrap_data=json.dumps(
-                payload, default=utils.pessimistic_json_iso_dttm_ser
+                getuserInfo(), default=utils.pessimistic_json_iso_dttm_ser
             ),
         )
 
@@ -678,3 +675,10 @@ def apply_http_headers(response: Response) -> Response:
         if k not in response.headers:
             response.headers[k] = v
     return response
+
+def getuserInfo():
+    return {
+        "user": bootstrap_user_data(g.user, include_perms=True),
+        "common": common_bootstrap_payload(),
+        "show_navbar": False if bootstrap_user_data(g.user, include_perms=True).get("roles").get("GUEST") is None else True,
+    }
