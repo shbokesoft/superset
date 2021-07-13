@@ -44,6 +44,7 @@ const container = document.getElementById('app');
 const bootstrap = JSON.parse(container?.getAttribute('data-bootstrap') ?? '{}');
 const user = { ...bootstrap.user };
 const menu = { ...bootstrap.common.menu_data };
+menu.show_navbar = bootstrap.show_navbar;
 const common = { ...bootstrap.common };
 initFeatureFlags(bootstrap.common.feature_flags);
 

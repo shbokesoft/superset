@@ -57,6 +57,7 @@ export interface MenuProps {
     brand: BrandProps;
     navbar_right: NavBarProps;
     settings: MenuObjectProps[];
+    show_navbar: boolean;
   };
   isFrontendRoute?: (path?: string) => boolean;
 }
@@ -144,7 +145,7 @@ const { SubMenu } = DropdownMenu;
 const { useBreakpoint } = Grid;
 
 export function Menu({
-  data: { menu, brand, navbar_right: navbarRight, settings },
+  data: { menu, brand, navbar_right: navbarRight, settings, show_navbar },
   isFrontendRoute = () => false,
 }: MenuProps) {
   const [showMenu, setMenu] = useState<MenuMode>('horizontal');
@@ -210,6 +211,9 @@ export function Menu({
       </SubMenu>
     );
   };
+  if (show_navbar) {
+    return <></>;
+  }
   return (
     <StyledHeader className="top" id="main-menu" role="navigation">
       <Global

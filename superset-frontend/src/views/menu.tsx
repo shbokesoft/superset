@@ -31,6 +31,7 @@ const container = document.getElementById('app');
 const bootstrapJson = container?.getAttribute('data-bootstrap') ?? '{}';
 const bootstrap = JSON.parse(bootstrapJson);
 const menu = { ...bootstrap.common.menu_data };
+menu.show_navbar = bootstrap.show_navbar;
 
 const emotionCache = createCache({
   key: 'menu',

@@ -118,6 +118,7 @@ const mockedProps = {
         ],
       },
     ],
+    show_navbar: false,
   },
 };
 
