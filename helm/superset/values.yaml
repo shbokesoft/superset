@@ -102,8 +102,8 @@ configMountPath: "/app/pythonpath"
 extraConfigMountPath: "/app/configs"
 
 image:
-  repository: apache/superset
-  tag: latest
+  repository: https://harbor.bokesoft.com/distro/superset
+  tag: 0.0.3
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
@@ -244,7 +244,7 @@ init:
     firstname: Superset
     lastname: Admin
     email: admin@superset.com
-    password: admin
+    password: bokesoft
   initContainers:
     - name: wait-for-postgres
       image: busybox:latest
