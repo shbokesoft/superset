@@ -5,6 +5,7 @@ export default styled.div`
     min-width: auto;
     max-width: none;
     margin: 0;
+    white-space: nowrap;
   }
 
   th,
