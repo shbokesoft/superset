@@ -103,7 +103,7 @@ extraConfigMountPath: "/app/configs"
 
 image:
   repository: harbor.bokesoft.com/distro/superset
-  tag: 0.0.3
+  tag: 0.0.5
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
