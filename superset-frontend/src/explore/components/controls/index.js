@@ -38,6 +38,7 @@ import TimeSeriesColumnControl from './TimeSeriesColumnControl';
 import ViewportControl from './ViewportControl';
 import VizTypeControl from './VizTypeControl';
 import MetricsControl from './MetricControl/MetricsControl';
+import GroupByControl from './GroupByControl/MetricsControl';
 import AdhocFilterControl from './FilterControl/AdhocFilterControl';
 import FilterBoxItemControl from './FilterBoxItemControl';
 import DndColumnSelectControl, {
@@ -72,6 +73,7 @@ const controlMap = {
   ViewportControl,
   VizTypeControl,
   MetricsControl,
+  GroupByControl,
   AdhocFilterControl,
   FilterBoxItemControl,
   ...sharedControlComponents,
