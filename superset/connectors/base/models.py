@@ -298,7 +298,7 @@ class BaseDatasource(
 
             for param in COLUMN_FORM_DATA_PARAMS:
                 for column in utils.get_iterable(form_data.get(param) or []):
-                    column_names.add(column)
+                    column_names.add((column.get("column") or {}).get("column_name"))
 
         filtered_metrics = [
             metric
