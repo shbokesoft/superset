@@ -14,10 +14,10 @@ export default styled.div`
   }
 
   th.isHide {
-    visibility: hidden;
+    display: none;
   }
   td.isHide {
-    visibility: hidden;
+    display: none;
   }
 
   thead > tr > th {

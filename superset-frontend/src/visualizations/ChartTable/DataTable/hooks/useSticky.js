@@ -165,7 +165,10 @@ function StickyWrap({
     const bodyColgroup = ___EmotionJSX("colgroup", null, colWidths.map((w, i) => // eslint-disable-next-line react/no-array-index-key
     ___EmotionJSX("col", {
       key: i,
-      width: w
+      width: w,
+      style: {
+        display: w > 0 ? 'block' : 'none'
+      }
     }))); // header columns do not have vertical scroll bars,
     // so we add scroll bar size to the last column
 
