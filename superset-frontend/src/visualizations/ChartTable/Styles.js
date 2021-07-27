@@ -13,6 +13,13 @@ export default styled.div`
     min-width: 4.3em;
   }
 
+  th.isHide {
+    visibility: hidden;
+  }
+  td.isHide {
+    visibility: hidden;
+  }
+
   thead > tr > th {
     padding-right: 1.4em;
     position: relative;

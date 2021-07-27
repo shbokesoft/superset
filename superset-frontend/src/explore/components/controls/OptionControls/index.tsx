@@ -23,7 +23,7 @@ import { InfoTooltipWithTrigger } from '@superset-ui/chart-controls';
 import { Tooltip } from 'src/components/Tooltip';
 import Icons from 'src/components/Icons';
 import { savedMetricType } from 'src/explore/components/controls/MetricControl/types';
-import AdhocMetric from 'src/explore/components/controls/MetricControl/AdhocMetric';
+import AdhocMetric from 'src/explore/components/controls/GroupByControl/AdhocMetric';
 import { StyledMetricOption } from '../../optionRenderers';
 
 export const DragContainer = styled.div`
@@ -274,7 +274,7 @@ export const OptionControlLabel = ({
         <Icons.XSmall iconColor={theme.colors.grayscale.light1} />
       </CloseContainer>
       <Label data-test="control-label">
-        {isFunction && <Icons.FunctionX viewBox="0 0 16 11" iconSize="l" />}
+        {adhocMetric?.invisible === undefined && isFunction && <Icons.FunctionX viewBox="0 0 16 11" iconSize="l" />}
         {getLabelContent()}
       </Label>
       {isExtra && (

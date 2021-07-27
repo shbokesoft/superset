@@ -30,6 +30,7 @@ import sqlKeywords from 'src/SqlLab/utils/sqlKeywords';
 import { noOp } from 'src/utils/common';
 
 import { AGGREGATES_OPTIONS } from 'src/explore/constants';
+import CheckboxControl from 'src/explore/components/controls/CheckboxControl';
 import columnType from 'src/explore/components/controls/GroupByControl/columnType';
 import savedMetricType from 'src/explore/components/controls/GroupByControl/savedMetricType';
 import AdhocMetric, {
@@ -51,6 +52,7 @@ const propTypes = {
   savedMetricsOptions: PropTypes.arrayOf(savedMetricType),
   savedMetric: savedMetricType,
   datasourceType: PropTypes.string,
+  invisible: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -104,6 +106,7 @@ export default class AdhocMetricEditPopover extends React.PureComponent {
       savedMetric: this.props.savedMetric,
       width: startingWidth,
       height: startingHeight,
+      invisible: this.props.adhocMetric.invisible,
     };
 
     document.addEventListener('mouseup', this.onMouseUp);
@@ -118,6 +121,7 @@ export default class AdhocMetricEditPopover extends React.PureComponent {
       prevState.adhocMetric?.sqlExpression !==
         this.state.adhocMetric?.sqlExpression ||
       prevState.adhocMetric?.aggregate !== this.state.adhocMetric?.aggregate ||
+      prevState.adhocMetric?.invisible !== this.state.adhocMetric?.invisible ||
       prevState.adhocMetric?.column?.column_name !==
         this.state.adhocMetric?.column?.column_name ||
       prevState.savedMetric?.metric_name !== this.state.savedMetric?.metric_name
@@ -193,6 +197,7 @@ export default class AdhocMetricEditPopover extends React.PureComponent {
       adhocMetric: prevState.adhocMetric.duplicateWith({
         column: undefined,
         aggregate: undefined,
+        invisible: false,
         sqlExpression: undefined,
         expressionType: EXPRESSION_TYPES.SIMPLE,
       }),
@@ -274,7 +279,9 @@ export default class AdhocMetricEditPopover extends React.PureComponent {
       datasourceType,
       ...popoverProps
     } = this.props;
-    const { adhocMetric, savedMetric } = this.state;
+    const { adhocMetric, savedMetric, invisible } = this.state;
+
+    adhocMetric.invisible = this.state.invisible;
     const keywords = sqlKeywords.concat(
       columns.map(column => ({
         name: column.column_name,
@@ -351,7 +358,7 @@ export default class AdhocMetricEditPopover extends React.PureComponent {
           onChange={this.onTabChange}
           allowOverflow
         >
-          <Tabs.TabPane key={SAVED_TAB_KEY} tab={t('Saved')}>
+          {/* <Tabs.TabPane key={SAVED_TAB_KEY} tab={t('Saved')}>
             <FormItem label={t('Saved metric')}>
               <StyledSelect
                 {...savedSelectProps}
@@ -372,7 +379,7 @@ export default class AdhocMetricEditPopover extends React.PureComponent {
                   ))}
               </StyledSelect>
             </FormItem>
-          </Tabs.TabPane>
+          </Tabs.TabPane> */}
           <Tabs.TabPane key={EXPRESSION_TYPES.SIMPLE} tab={t('Simple')}>
             <FormItem label={t('column')}>
               <Select
@@ -391,7 +398,7 @@ export default class AdhocMetricEditPopover extends React.PureComponent {
                 ))}
               </Select>
             </FormItem>
-            <FormItem label={t('aggregate')}>
+            {/* <FormItem label={t('aggregate')}>
               <Select
                 {...aggregateSelectProps}
                 name="select-aggregate"
@@ -403,9 +410,17 @@ export default class AdhocMetricEditPopover extends React.PureComponent {
                   </Select.Option>
                 ))}
               </Select>
+            </FormItem> */}
+            <FormItem label={t('invisible')}>
+              <CheckboxControl
+                name="annotation-groups-hide"
+                label={t('Set group visible or not')}
+                value={!invisible}
+                onChange={v => this.setState({ invisible: !v })}
+              />
             </FormItem>
           </Tabs.TabPane>
-          <Tabs.TabPane
+          {/* <Tabs.TabPane
             key={EXPRESSION_TYPES.SQL}
             tab={t('Custom SQL')}
             data-test="adhoc-metric-edit-tab#custom"
@@ -433,7 +448,7 @@ export default class AdhocMetricEditPopover extends React.PureComponent {
                 Custom SQL Metrics are not available on druid datasources
               </div>
             )}
-          </Tabs.TabPane>
+          </Tabs.TabPane> */}
         </Tabs>
         <div>
           <Button

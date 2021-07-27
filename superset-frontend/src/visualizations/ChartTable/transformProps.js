@@ -197,6 +197,18 @@ const transformProps = chartProps => {
     script
   } = formData;
   const [metrics, percentMetrics, columns] = processColumns(chartProps);
+
+  if (formData.groupby.length) {
+    formData.groupby.forEach((item) => {
+      columns.forEach((element) => {
+        if (item.column.column_name === element.key) {
+          element.label = item.label;
+          element.invisible = item.invisible;
+        }
+      })
+    })
+  }
+
   let baseQuery;
   let countQuery;
   let totalQuery;

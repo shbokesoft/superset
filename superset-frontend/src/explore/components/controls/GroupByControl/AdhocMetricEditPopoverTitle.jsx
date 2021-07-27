@@ -70,7 +70,7 @@ export default class AdhocMetricEditPopoverTitle extends React.Component {
 
   render() {
     const { title, onChange, isEditDisabled } = this.props;
-    const defaultLabel = t('My metric');
+    const defaultLabel = t('My groupby');
 
     if (isEditDisabled) {
       return (

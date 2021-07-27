@@ -72,6 +72,7 @@ export default class AdhocMetric {
       this.column = null;
       this.aggregate = null;
     }
+    this.invisible = adhocMetric.invisible || false;
     this.isNew = !!adhocMetric.isNew;
     this.hasCustomLabel = !!(adhocMetric.hasCustomLabel && adhocMetric.label);
     this.label = this.hasCustomLabel
@@ -118,6 +119,7 @@ export default class AdhocMetric {
   equals(adhocMetric) {
     return (
       adhocMetric.label === this.label &&
+      adhocMetric.invisible === this.invisible &&
       adhocMetric.expressionType === this.expressionType &&
       adhocMetric.sqlExpression === this.sqlExpression &&
       adhocMetric.aggregate === this.aggregate &&
@@ -128,7 +130,7 @@ export default class AdhocMetric {
 
   isValid() {
     if (this.expressionType === EXPRESSION_TYPES.SIMPLE) {
-      return !!(this.column && this.aggregate);
+      return !!(this.column);
     }
     if (this.expressionType === EXPRESSION_TYPES.SQL) {
       return !!this.sqlExpression;

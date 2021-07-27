@@ -270,7 +270,7 @@ export default function TableChart(props) {
           // show raw number in title in case of numeric values
           title: typeof value === 'number' ? String(value) : undefined,
           onClick: emitFilter && !valueRange ? () => toggleFilter(key, value) : undefined,
-          className: [className, value == null ? 'dt-is-null' : '', isActiveFilterValue(key, value) ? ' dt-is-active-filter' : ''].join(' '),
+          className: [className, value == null ? 'dt-is-null' : '', isActiveFilterValue(key, value) ? ' dt-is-active-filter' : '', column.invisible ? 'isHide' : ''].join(' '),
           style: { ...sharedStyle,
             background: valueRange ? cellBar({
               value: value,
@@ -298,7 +298,7 @@ export default function TableChart(props) {
         style
       }) => ___EmotionJSX("th", {
         title: "Shift + Click to sort by multiple columns",
-        className: [className, col.isSorted ? 'is-sorted' : ''].join(' '),
+        className: [className, col.isSorted ? 'is-sorted' : '', column.invisible ? 'isHide' : ''].join(' '),
         style: { ...sharedStyle,
           ...style
         },

@@ -401,7 +401,7 @@ class MetricsControl extends React.PureComponent {
             : this.addNewMetricPopoverTrigger(
                 <AddControlLabel>
                   <Icons.PlusSmall iconColor={theme.colors.grayscale.light1} />
-                  {t('Add metric')}
+                  {t('Add groupby')}
                 </AddControlLabel>,
               )}
         </LabelsContainer>

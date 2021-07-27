@@ -165,17 +165,14 @@ const config = {
       name: 'groupby',
       override: {
         visibility: isAggMode,
-        mapStateToProps: (state, controlState) => {
-          var _sharedControls$group, _originalMapStateToPr, _controls$metrics2, _controls$percent_met;
-
-          const {
-            controls
-          } = state;
-          const originalMapStateToProps = sharedControls == null ? void 0 : (_sharedControls$group = sharedControls.groupby) == null ? void 0 : _sharedControls$group.mapStateToProps; // @ts-ignore
-
-          const newState = (_originalMapStateToPr = originalMapStateToProps == null ? void 0 : originalMapStateToProps(state, controlState)) != null ? _originalMapStateToPr : {};
-          newState.externalValidationErrors = validateAggControlValues(controls, [(_controls$metrics2 = controls.metrics) == null ? void 0 : _controls$metrics2.value, (_controls$percent_met = controls.percent_metrics) == null ? void 0 : _controls$percent_met.value, controlState.value]);
-          return newState;
+        type: 'GroupByControl',
+        mapStateToProps: state => {
+          const { datasource } = state;
+          return {
+            columns: datasource ? datasource.columns : [],
+            savedMetrics: datasource ? datasource.metrics : [],
+            datasourceType: datasource && datasource.type,
+          };
         },
         rerender: ['metrics', 'percent_metrics']
       }
