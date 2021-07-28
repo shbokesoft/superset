@@ -53,6 +53,9 @@ COLUMN_FORM_DATA_PARAMS = [
     "series",
 ]
 
+OBJECT_FORM_LIST = [
+    "table"
+]
 
 class DatasourceKind(str, Enum):
     VIRTUAL = "virtual"
@@ -298,7 +301,11 @@ class BaseDatasource(
 
             for param in COLUMN_FORM_DATA_PARAMS:
                 for column in utils.get_iterable(form_data.get(param) or []):
-                    column_names.add((column.get("column") or {}).get("column_name"))
+                    if form_data.get("viz_type") in OBJECT_FORM_LIST:
+                        column_names.add(
+                            (column.get("column") or {}).get("column_name"))
+                    else:
+                        column_names.add(column)
 
         filtered_metrics = [
             metric
