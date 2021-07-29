@@ -175,7 +175,7 @@ export default styled(NVD3)`
   theme
 }) => theme.typography.weights.bold};
     }
-    tbody tr:not(.tooltip-header) td:nth-child(2) {
+    tbody tr:not(.tooltip-header) td:nth-of-type(2) {
       word-break: break-word;
     }
   }
