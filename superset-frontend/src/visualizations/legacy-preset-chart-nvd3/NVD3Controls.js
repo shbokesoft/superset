@@ -284,7 +284,20 @@ export const eventScript = {
 export const timeSeriesSection = [{
   label: t('Query'),
   expanded: true,
-  controlSetRows: [['metrics'], ['adhoc_filters'], ['groupby'], ['limit'], ['timeseries_limit_metric'], [{
+  controlSetRows: [['metrics'], ['adhoc_filters'], [{
+    name: 'groupby',
+    override: {
+      type: 'GroupByControl',
+      mapStateToProps: state => {
+        const { datasource } = state;
+        return {
+          columns: datasource ? datasource.columns : [],
+          savedMetrics: datasource ? datasource.metrics : [],
+          datasourceType: datasource && datasource.type,
+        };
+      }
+    }
+  }], ['limit'], ['timeseries_limit_metric'], [{
     name: 'order_desc',
     config: {
       type: 'CheckboxControl',

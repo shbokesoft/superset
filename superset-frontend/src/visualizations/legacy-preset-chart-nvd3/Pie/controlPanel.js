@@ -23,7 +23,20 @@ const config = {
   controlPanelSections: [{
     label: t('Query'),
     expanded: true,
-    controlSetRows: [['groupby'], ['metric'], ['adhoc_filters'], ['row_limit']]
+    controlSetRows: [[{
+      name: 'groupby',
+      override: {
+        type: 'GroupByControl',
+        mapStateToProps: state => {
+          const { datasource } = state;
+          return {
+            columns: datasource ? datasource.columns : [],
+            savedMetrics: datasource ? datasource.metrics : [],
+            datasourceType: datasource && datasource.type,
+          };
+        }
+      }
+    }], ['metric'], ['adhoc_filters'], ['row_limit']]
   }, {
     label: t('Chart Options'),
     expanded: true,

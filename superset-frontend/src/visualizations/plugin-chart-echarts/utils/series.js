@@ -83,11 +83,11 @@ export function extractGroupbyLabel({
   timeFormatter,
   coltypeMapping = {}
 }) {
-  return (groupby || []).map(val => formatSeriesName(datum[val], {
+  return (groupby || []).map(val => formatSeriesName(datum[val.column.column_name], {
     numberFormatter,
     timeFormatter,
-    ...(coltypeMapping[val] && {
-      coltype: coltypeMapping[val]
+    ...(coltypeMapping[val.column.column_name] && {
+      coltype: coltypeMapping[val.column.column_name]
     })
   })).join(', ');
 }

@@ -37,7 +37,20 @@ const config = {
   controlPanelSections: [sections.legacyRegularTime, {
     label: t('Query'),
     expanded: true,
-    controlSetRows: [['groupby'], ['metric'], ['adhoc_filters'], ['row_limit'], [{
+    controlSetRows: [[{
+      name: 'groupby',
+      override: {
+        type: 'GroupByControl',
+        mapStateToProps: state => {
+          const { datasource } = state;
+          return {
+            columns: datasource ? datasource.columns : [],
+            savedMetrics: datasource ? datasource.metrics : [],
+            datasourceType: datasource && datasource.type,
+          };
+        },
+      }
+    }], ['metric'], ['adhoc_filters'], ['row_limit'], [{
       name: 'sort_by_metric',
       config: {
         default: true,
