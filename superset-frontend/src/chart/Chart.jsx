@@ -121,6 +121,13 @@ class Chart extends React.PureComponent {
   }
 
   runQuery() {
+    // allCharts 请求之前处理groupby
+    let arr = this.props.formData.groupby;
+    if (arr.length) {
+      this.props.formData.groupby = arr.map((item) => {
+        return item.column.column_name;
+      })
+    }
     if (this.props.chartId > 0 && isFeatureEnabled(FeatureFlag.CLIENT_CACHE)) {
       // Load saved chart with a GET request
       this.props.actions.getSavedChart(

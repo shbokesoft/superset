@@ -12,6 +12,23 @@ const propTypes = {
 
 function MixLineBar(element, props) {
   const { width, height, data, formData, x_data, series, legend } = props; // transformProps.js 返回的数据
+  // x_data处理 控制groupby显示或者隐藏
+  let invisible_arr = [];
+  formData.groupby.length && formData.groupby.forEach((item, index) => {
+    item.invisible && x_data.forEach((str) => {
+      str = str.split(",");
+      invisible_arr.push(index);
+    })
+  })
+  invisible_arr = [...new Set(invisible_arr)];
+
+function handleInvisible(array, value) {
+  let str2arr = value.split(",");
+  array.filter((val, index) => {
+      str2arr.splice((val - index), 1);
+    })
+    return str2arr.join(",");
+  }
 
   const fd = formData;
   // 配置y轴显示信息
@@ -112,7 +129,23 @@ function MixLineBar(element, props) {
         crossStyle: {
           color: '#999',
         },
+        label: {
+          formatter: function (params) {
+            if (params.axisDimension === "x") {
+              return handleInvisible(invisible_arr, params.value);
+            } else {
+              return params.value;
+            }
+          }
+        }
       },
+      formatter: function (params) {
+        let str = params[0].axisValueLabel + '<br />';
+        params.forEach((item) => {
+          str += `${item.seriesName}:${item.value}<br />`
+        })
+        return str;
+      }
     },
     legend: {
       data: legend, // [] x轴的数据
@@ -123,6 +156,15 @@ function MixLineBar(element, props) {
         data: x_data,
         axisPointer: {
           type: 'shadow',
+        },
+        axisLabel: {
+          formatter: function (value) {
+            if (invisible_arr.length) {
+              return handleInvisible(invisible_arr, value);
+            } else {
+              return value;
+            }
+          }
         },
       },
     ],

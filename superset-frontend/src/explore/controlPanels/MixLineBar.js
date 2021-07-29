@@ -15,7 +15,20 @@ export default {
     {
       label: t('X Axis'),
       expanded: true,
-      controlSetRows: [['groupby']],
+      controlSetRows: [[{
+        name: 'groupby',
+        override: {
+          type: 'GroupByControl',
+          mapStateToProps: state => {
+            const { datasource } = state;
+            return {
+              columns: datasource ? datasource.columns : [],
+              savedMetrics: datasource ? datasource.metrics : [],
+              datasourceType: datasource && datasource.type,
+            };
+          },
+        }
+      }]],
     },
     {
       label: t('Line Type'),
