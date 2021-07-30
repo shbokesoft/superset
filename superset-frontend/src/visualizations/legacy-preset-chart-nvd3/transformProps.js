@@ -126,7 +126,7 @@ export default function transformProps(chartProps) {
     markerLineLabels = tokenizeToStringArray(markerLineLabels);
     markers = tokenizeToNumericArray(markers);
   }
-
+  
   return {
     width,
     height,

@@ -94,6 +94,21 @@ export default function transformProps(chartProps) {
     ...DEFAULT_PIE_FORM_DATA,
     ...formData
   };
+  
+  let invisible_arr = [];
+  groupby.length && groupby.forEach((item, index) => {
+    item.invisible && invisible_arr.push(index);
+  })
+  invisible_arr = [...new Set(invisible_arr)];
+
+  function handleInvisible(array, value) {
+    let str2arr = value.split(",");
+    array.filter((val, index) => {
+      str2arr.splice((val - index), 1);
+    })
+    return str2arr.join(",");
+  }
+
   const metricLabel = getMetricLabel(metric);
   const minShowLabelAngle = (showLabelsThreshold || 0) * 3.6;
   const keys = data.map(datum => extractGroupbyLabel({
@@ -169,9 +184,15 @@ export default function transformProps(chartProps) {
     label: labelsOutside ? { ...defaultLabel,
       position: 'outer',
       alignTo: 'none',
-      bleedMargin: 5
+      bleedMargin: 5,
+      formatter: function (params) {
+        return handleInvisible(invisible_arr, params.name);
+      }
     } : { ...defaultLabel,
-      position: 'inner'
+      position: 'inner',
+      formatter: function (params) {
+        return handleInvisible(invisible_arr, params.name);
+      }
     },
     emphasis: {
       label: {
@@ -187,11 +208,14 @@ export default function transformProps(chartProps) {
     },
     tooltip: { ...defaultTooltip,
       trigger: 'item',
-      formatter: params => formatPieLabel({
-        params,
-        numberFormatter,
-        labelType: EchartsPieLabelType.KeyValuePercent
-      })
+      formatter: params => {
+        let newParmas = formatPieLabel({
+          params,
+          numberFormatter,
+          labelType: EchartsPieLabelType.KeyValuePercent
+        })
+        return handleInvisible(invisible_arr, newParmas.split(":")[0]) + ' :' + newParmas.split(":")[1];
+      }
     },
     legend: { ...getLegendProps(legendType, legendOrientation, showLegend),
       data: keys

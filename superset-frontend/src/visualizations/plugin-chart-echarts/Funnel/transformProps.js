@@ -88,6 +88,21 @@ export default function transformProps(chartProps) {
     ...DEFAULT_FUNNEL_FORM_DATA,
     ...formData
   };
+
+  let invisible_arr = [];
+  groupby.length && groupby.forEach((item, index) => {
+    item.invisible && invisible_arr.push(index);
+  })
+  invisible_arr = [...new Set(invisible_arr)];
+
+  function handleInvisible(array, value) {
+    let str2arr = value.split(",");
+    array.filter((val, index) => {
+      str2arr.splice((val - index), 1);
+    })
+    return str2arr.join(",");
+  }
+
   const metricLabel = getMetricLabel(metric);
   const keys = data.map(datum => extractGroupbyLabel({
     datum,
@@ -158,7 +173,10 @@ export default function transformProps(chartProps) {
     },
     label: { ...defaultLabel,
       position: labelLine ? 'outer' : 'inner',
-      textBorderColor: 'transparent'
+      textBorderColor: 'transparent',
+      formatter: function (params) {
+        return handleInvisible(invisible_arr, params.name);
+      }
     },
     emphasis: {
       label: {
@@ -173,11 +191,14 @@ export default function transformProps(chartProps) {
     },
     tooltip: { ...defaultTooltip,
       trigger: 'item',
-      formatter: params => formatFunnelLabel({
-        params,
-        numberFormatter,
-        labelType: EchartsFunnelLabelTypeType.KeyValuePercent
-      })
+      formatter: params => {
+        let newParmas = formatFunnelLabel({
+          params,
+          numberFormatter,
+          labelType: EchartsFunnelLabelTypeType.KeyValuePercent
+        })
+        return handleInvisible(invisible_arr, newParmas.split(":")[0]) + ' :' + newParmas.split(":")[1];
+      }
     },
     legend: { ...getLegendProps(legendType, legendOrientation, showLegend),
       data: keys

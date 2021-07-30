@@ -56,7 +56,10 @@ COLUMN_FORM_DATA_PARAMS = [
 OBJECT_FORM_LIST = [
     "table",
     "dist_bar",
-    "mix_line_bar"
+    "mix_line_bar",
+    "pie",
+    "funnel",
+    "line"
 ]
 
 class DatasourceKind(str, Enum):

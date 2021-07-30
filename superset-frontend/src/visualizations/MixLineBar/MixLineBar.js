@@ -15,16 +15,13 @@ function MixLineBar(element, props) {
   // x_data处理 控制groupby显示或者隐藏
   let invisible_arr = [];
   formData.groupby.length && formData.groupby.forEach((item, index) => {
-    item.invisible && x_data.forEach((str) => {
-      str = str.split(",");
-      invisible_arr.push(index);
-    })
+    item.invisible && invisible_arr.push(index);
   })
   invisible_arr = [...new Set(invisible_arr)];
 
-function handleInvisible(array, value) {
-  let str2arr = value.split(",");
-  array.filter((val, index) => {
+  function handleInvisible(array, value) {
+    let str2arr = value.split(",");
+    array.filter((val, index) => {
       str2arr.splice((val - index), 1);
     })
     return str2arr.join(",");

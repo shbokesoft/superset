@@ -99,13 +99,6 @@ const buildQuery = (formData, options) => {
       moreProps.row_limit = (_ownState$pageSize = ownState.pageSize) != null ? _ownState$pageSize : formDataCopy.server_page_length;
       moreProps.row_offset = ((_ownState$currentPage = ownState.currentPage) != null ? _ownState$currentPage : 0) * ((_ownState$pageSize2 = ownState.pageSize) != null ? _ownState$pageSize2 : 0);
     }
-    
-    if (formDataCopy.groupby.length) {
-      let groupbyArr = formDataCopy.groupby;
-      groupbyArr.forEach((item) => {
-        item.column && baseQueryObject.columns.push(item.column.column_name);
-      })
-    }
 
     let queryObject = { ...baseQueryObject,
       orderby,
