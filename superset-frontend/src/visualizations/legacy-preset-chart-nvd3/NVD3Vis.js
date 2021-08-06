@@ -289,6 +289,13 @@ function nvd3Vis(element, props) {
         } else {
           chart = nv.models.lineChart();
         }
+        
+        chart.lines.dispatch.on('elementClick', element => {
+          if (eventScript && eventScript.trim()) {
+            console.log('element:', element);
+            eval(eventScript); // 执行不被信任的脚本，待引入沙盒安全机制 sandbox
+          }
+        });
 
         chart.xScale(d3.time.scale.utc());
         chart.interpolate(lineInterpolation);

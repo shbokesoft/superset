@@ -18,7 +18,7 @@
  */
 import { t } from '@superset-ui/core';
 import { sections } from '@superset-ui/chart-controls';
-import { lineInterpolation, showBrush, showLegend, xAxisLabel, bottomMargin, xTicksLayout, xAxisFormat, yLogScale, yAxisBounds, yAxisLabel, xAxisShowMinmax, yAxisShowMinmax, richTooltip, leftMargin, showMarkers, timeSeriesSection } from '../NVD3Controls';
+import { lineInterpolation, showBrush, showLegend, xAxisLabel, bottomMargin, xTicksLayout, xAxisFormat, yLogScale, yAxisBounds, yAxisLabel, xAxisShowMinmax, yAxisShowMinmax, richTooltip, leftMargin, showMarkers, timeSeriesSection, eventScript } from '../NVD3Controls';
 const config = {
   controlPanelSections: [sections.legacyTimeseriesTime, timeSeriesSection[0], {
     label: t('Chart Options'),
@@ -32,7 +32,7 @@ const config = {
         default: false,
         description: t('Send range filter events to other charts')
       }
-    }], [showLegend], [richTooltip], [showMarkers], [lineInterpolation]]
+    }], [showLegend], [richTooltip], [showMarkers], [lineInterpolation], [eventScript]]
   }, {
     label: t('X Axis'),
     expanded: true,
