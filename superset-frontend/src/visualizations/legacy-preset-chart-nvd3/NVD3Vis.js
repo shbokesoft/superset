@@ -289,7 +289,12 @@ function nvd3Vis(element, props) {
         } else {
           chart = nv.models.lineChart();
         }
-        
+
+        chart.legend.key(params => {
+          params.key = handleInvisible(invisible_arr, params.key);
+          return params.key;
+        })
+
         chart.lines.dispatch.on('elementClick', element => {
           if (eventScript && eventScript.trim()) {
             console.log('element:', element);
@@ -592,7 +597,12 @@ function nvd3Vis(element, props) {
       chart.useInteractiveGuideline(true);
 
       if (vizType === 'line') {
-        chart.interactiveLayer.tooltip.contentGenerator(d => generateRichLineTooltipContent(d, smartDateVerboseFormatter, yAxisFormatter));
+        chart.interactiveLayer.tooltip.contentGenerator((d) => {
+          d.series.forEach(item => {
+            item.key = handleInvisible(invisible_arr, item.key);
+          });
+          return generateRichLineTooltipContent(d, smartDateVerboseFormatter, yAxisFormatter);
+        })
       } else {
         // area chart
         chart.interactiveLayer.tooltip.contentGenerator(d => generateAreaChartTooltipContent(d, smartDateVerboseFormatter, yAxisFormatter, chart));
