@@ -326,6 +326,10 @@ function nvd3Vis(element, props) {
         chart.xAxis.showMaxMin(false);
         chart.stacked(isBarStacked);
 
+        chart.tooltip.headerFormatter(params => {
+          return handleInvisible(invisible_arr, params);
+        });
+
         if (orderBars) {
           data.forEach(d => {
             d.values.sort((a, b) => tryNumify(a.x) < tryNumify(b.x) ? -1 : 1);
