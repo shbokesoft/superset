@@ -153,6 +153,7 @@ const propTypes = {
   // time-pivot only
   baseColor: rgbObjectType,
   eventScript: PropTypes.string,
+  groupby: PropTypes.array
 };
 
 const NOOP = () => {};
@@ -216,6 +217,7 @@ function nvd3Vis(element, props) {
     yField,
     yIsLogScale,
     eventScript,
+    groupby
   } = props;
   const isExplore = document.querySelector('#explorer-container') !== null;
   const container = element;
@@ -255,6 +257,20 @@ function nvd3Vis(element, props) {
 
     const canShowBrush = isTruthy(showBrush) || showBrush === 'auto' && maxHeight >= MIN_HEIGHT_FOR_BRUSH && xTicksLayout !== '45°';
     const numberFormatter = getNumberFormatter(numberFormat);
+
+    let invisible_arr = [];
+    groupby.length && groupby.forEach((item, index) => {
+      item.invisible && invisible_arr.push(index);
+    });
+    invisible_arr = [...new Set(invisible_arr)];
+
+    function handleInvisible(array, value) {
+      let str2arr = value.split(",");
+      array.filter((val, index) => {
+        str2arr.splice((val - index), 1);
+      })
+      return str2arr.join(",");
+    }
 
     switch (vizType) {
       case 'line':
@@ -505,7 +521,7 @@ function nvd3Vis(element, props) {
       const isXAxisString = isVizTypes(['dist_bar', 'box_plot']);
 
       if (isXAxisString) {
-        chart.xAxis.tickFormat(d => d.length > MAX_NO_CHARACTERS_IN_LABEL ? `${d.slice(0, Math.max(0, MAX_NO_CHARACTERS_IN_LABEL))}…` : d);
+        chart.xAxis.tickFormat(d => d.length > MAX_NO_CHARACTERS_IN_LABEL ? `${handleInvisible(invisible_arr, d).slice(0, Math.max(0, MAX_NO_CHARACTERS_IN_LABEL))}…` : handleInvisible(invisible_arr, d));
       } else {
         chart.xAxis.tickFormat(xAxisFormatter);
       }
